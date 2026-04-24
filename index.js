@@ -19,10 +19,6 @@ app.get("/", (req, res) => {
 app.get("/:id", (req, res) => {
     let { id } = req.params;
     id = id.trim();
-    if (!/^\w+$/.test(id)) {
-        res.status(400).json({ error: "Invalid request id", code: 400 });
-        return;
-    }
     const params = req.query || {};
     console.log(`Processing request for ID: ${id}`);
     resend.emails.send({
