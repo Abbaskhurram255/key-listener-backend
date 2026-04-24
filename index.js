@@ -20,6 +20,7 @@ app.get("/:id", (req, res) => {
     let { id } = req.params;
     id = id.trim();
     if (!/^\w+$/.test(id)) {
+        res.status(400).json({ error: "Invalid request id", code: 400 });
         return;
     }
     const params = req.query || {};
