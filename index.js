@@ -19,6 +19,10 @@ app.get("/", (req, res) => {
 app.get("/:id", (req, res) => {
     let { id } = req.params;
     id = id.trim();
+    if (id.includes("favicon")) {
+        res.status(400).json({ error: "Not a valid request", code: 400 })
+        return;
+    }
     const params = req.query || {};
     console.log(`Processing request for ID: ${id}`);
     resend.emails.send({
